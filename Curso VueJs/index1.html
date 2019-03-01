@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <span v-if="1 < 3 "> A</span>
+        <span v-else-if="3 < 1"> B </span>
+        <span v-else> C </span> -->
+
+        <!-- <span v-bind:title="titulo" v-show="isVisible" />
+
+        <span v-bind:title="titulo" v-if="isVisible">
+
+            {{ mensagem.toUpperCase() }}
+
+        </span> -->
+
+        <span>
+            <ul>
+                <li v-for="(item, index) in lista" :key="index">
+                   {{index}} - {{item.texto}}
+                </li>
+            </ul>
+
+
+            <ul>
+                <li v-for="numero in 5">
+                    {{ numero }}
+                </li>
+            </ul>
+        </span>
+        <div v-html="meuHTML"></div>
+        
+        <button @click="AumentarContador()">Click </button> {{ contador }}
+        <div>
+            {{texto | Maiusculo}}
+        </div>
+
+        <meu-componente nome="nomedapropriedade"></meu-componente>
+        <meu-componente :nome="titulo"></meu-componente>
+
+        <div is="meu-componente"></div>
+
+    </div>
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="js/app1.js"></script>
+</body>
+
+</html>

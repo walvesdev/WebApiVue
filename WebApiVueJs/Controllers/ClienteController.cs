@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using WebApiVueJs.AcessoDados;
 using WebApiVueJs.AcessoDados.Repositorios;
 using WebApiVueJs.Model;
+using RestSharp;
+using RestSharp.Serialization.Json;
 
 namespace WebApiVueJs.Controllers
 {
@@ -24,9 +26,19 @@ namespace WebApiVueJs.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Cliente>> Get()
+        public List<Cliente> Get()
         {
-            return clienteRepositorio.SelecionarTodos();
+
+            RestClient restClient = new RestClient(string.Format("https://api.myjson.com/bins/9cwfy"));
+            RestRequest restRequest = new RestRequest(Method.GET);
+
+            IRestResponse restResponse = restClient.Execute(restRequest);
+
+            List<Cliente> clientes = new JsonDeserializer().Deserialize<List<Cliente>>(restResponse);
+
+            // return clienteRepositorio.SelecionarTodos();
+
+            return clientes;
         }
 
         [HttpGet("{id}")]

@@ -14,15 +14,15 @@ namespace WebApiVueJs.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ItemsController : ControllerBase
+    public class ItemController : ControllerBase
     {       
 
         [HttpGet]
         public List<ItemsList> Get()
         {
 
-            RestClient restClient = new RestClient(string.Format("https://www.rjstecnologia.com.br/documentos/json-teste.json"));
-            RestRequest restRequest = new RestRequest(Method.GET);
+            RestClient restClient = new RestClient(string.Format("https://www.rjstecnologia.com.br/"));
+            RestRequest restRequest = new RestRequest(string.Format("documentos/json-teste.json"), Method.GET);
 
             IRestResponse restResponse = restClient.Execute(restRequest);
 
